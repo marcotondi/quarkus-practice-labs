@@ -36,8 +36,10 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 |-----------|-----------|-------|
 | 01-configuration | [01-typed-config](labs/01-configuration/01-typed-config/README.md) | disponibile |
 | 01-configuration | [02-overrides-configsource](labs/01-configuration/02-overrides-configsource/README.md) | disponibile |
+| 01-configuration | [03-config-mapping](labs/01-configuration/03-config-mapping/README.md) | disponibile |
 | 02-rest-api | [01-crud-api](labs/02-rest-api/01-crud-api/README.md) | disponibile |
 | 02-rest-api | [02-exception-mapping](labs/02-rest-api/02-exception-mapping/README.md) | disponibile |
+| 02-rest-api | [03-bean-validation](labs/02-rest-api/03-bean-validation/README.md) | disponibile |
 | 03-persistence | [01-panache-crud](labs/03-persistence/01-panache-crud/README.md) | disponibile |
 | 03-persistence | [02-repository-relations](labs/03-persistence/02-repository-relations/README.md) | disponibile |
 | 04-fault-tolerance | [01-resilience-policies](labs/04-fault-tolerance/01-resilience-policies/README.md) | disponibile |
@@ -48,7 +50,9 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | 07-metrics | [01-counters-timers](labs/07-metrics/01-counters-timers/README.md) | disponibile |
 | 08-openapi | [01-api-documentation](labs/08-openapi/01-api-documentation/README.md) | disponibile |
 | 09-rest-client | [01-declarative-client](labs/09-rest-client/01-declarative-client/README.md) | disponibile |
+| 09-rest-client | [02-response-exception-mapper](labs/09-rest-client/02-response-exception-mapper/README.md) | disponibile |
 | 10-messaging | [01-pipelines-ack](labs/10-messaging/01-pipelines-ack/README.md) | disponibile |
+| 11-observability | [01-tracing-baggage](labs/11-observability/01-tracing-baggage/README.md) | disponibile |
 
 ## Come usare un laboratorio
 

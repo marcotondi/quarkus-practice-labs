@@ -129,8 +129,10 @@ Regole d'esame da rispettare nelle tracce:
 |-----------|-----------|-------|
 | 01-configuration | 01-typed-config | **traccia + soluzione** |
 | 01-configuration | 02-overrides-configsource | traccia |
+| 01-configuration | 03-config-mapping | traccia |
 | 02-rest-api | 01-crud-api | **traccia + soluzione** |
 | 02-rest-api | 02-exception-mapping | traccia |
+| 02-rest-api | 03-bean-validation | traccia |
 | 03-persistence | 01-panache-crud | traccia |
 | 03-persistence | 02-repository-relations | traccia |
 | 04-fault-tolerance | 01-resilience-policies | traccia |
@@ -141,7 +143,9 @@ Regole d'esame da rispettare nelle tracce:
 | 07-metrics | 01-counters-timers | traccia |
 | 08-openapi | 01-api-documentation | traccia |
 | 09-rest-client | 01-declarative-client | traccia |
+| 09-rest-client | 02-response-exception-mapper | traccia |
 | 10-messaging | 01-pipelines-ack | traccia |
+| 11-observability | 01-tracing-baggage | traccia |
 
 Stato possibili: `pianificato` → `traccia` → `traccia + soluzione`.
 
