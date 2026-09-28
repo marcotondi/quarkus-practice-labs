@@ -197,24 +197,31 @@ test 60%, correttezza REST 20%, best practice 20%.
 
 ## 9. Backlog: domini da rafforzare
 
-Domini richiesti dall'esame ma non ancora coperti, o coperti solo in
-parte. Da trasformare in esercizi dedicati. Stato riferito al catalogo §6.
+Da coprire in esercizi futuri (stato attuale tra parentesi).
 
-| Dominio | Stato | Cosa aggiungere |
-|---------|-------|-----------------|
-| Dev Services vs container manuali | ❌ assente | Lab con PostgreSQL via **Dev Services** (Testcontainers) nei test e sua **disabilitazione** (`quarkus.devservices.enabled=false` o datasource esplicito); variante con container avviato manualmente |
-| `@QuarkusTestResource` | ⚠️ parziale | Già usato (server HTTP in-process in `09-rest-client`); aggiungere esempio con **Testcontainers/WireMock** e **override dinamico di proprietà** in `start()` |
-| `@ConfigMapping` type-safe | ✅ coperto | `01-configuration/01-typed-config`, `01-configuration/03-config-mapping`. Estendere con gruppi annidati più profondi, `Optional`, `List`, `Map` |
-| Custom Health Check | ✅ coperto | `05-health/01-liveness-readiness`. Estendere con `data(...)`, `/q/health/group`, health check di dipendenze |
-| REST Client Reactive | ⚠️ parziale | `09-rest-client/01`, `/02`. Aggiungere header dinamici (`@HeaderParam`, `ClientHeadersFactory`), token di auth, client reattivo (`Uni<T>`) |
-| Bean Validation | ⚠️ parziale | `02-rest-api/03-bean-validation` (solo status `400`). Aggiungere `ConstraintViolationException` + `ExceptionMapper` con formato errori custom (campo → messaggio) |
-| Mutiny avanzato (`Uni`/`Multi`) | ❌ assente | `Uni.combine().all().unis(a, b).asTuple()`, `.onItem().transform(...)` / `.transformToUni(...)`, `.onFailure().recoverWithItem(...)` / `.retry()` |
-| Transazioni avanzate | ❌ assente | `@Transactional(TxType.REQUIRES_NEW)`, `QuarkusTransaction.requiringNew().run(...)`, `QuarkusTransaction.setRollbackOnly()`, rollback esplicito |
-| Test mocking avanzato | ❌ assente | `@InjectMock`, `@InjectSpy`, mock di un client REST con `@InjectMock` |
-| OpenAPI avanzato | ⚠️ parziale | `08-openapi/01-api-documentation`. Aggiungere `@OpenAPIDefinition`/`@Info`, `@APIResponses`, security scheme, info via `application.properties` |
+**Assenti — da creare:**
+- **Mutiny avanzato**: `Uni.combine().all().unis(a, b).asTuple()`,
+  `onItem().transform/transformToUni`, `onFailure().recoverWithItem/retry`.
+- **Transazioni avanzate**: `@Transactional(TxType.REQUIRES_NEW)`,
+  `QuarkusTransaction.requiringNew().run(...)`, `setRollbackOnly()`.
+- **Dev Services / container**: PostgreSQL via Testcontainers nei test,
+  disabilitazione Dev Services, datasource esplicito.
+- **Test mocking**: `@InjectMock`, `@InjectSpy`.
 
-Stati: ❌ assente · ⚠️ parziale · ✅ coperto.
+**Parziali — da estendere:**
+- **`@QuarkusTestResource`** (server HTTP in-process, `09-rest-client`):
+  Testcontainers/WireMock + override di proprietà in `start()`.
+- **REST Client** (`09-rest-client/01`, `/02`): header dinamici
+  (`@HeaderParam`, `ClientHeadersFactory`), token, client `Uni<T>`.
+- **Bean Validation** (`02-rest-api/03`): `ConstraintViolationException`
+  + `ExceptionMapper` con errori custom (campo → messaggio).
+- **OpenAPI** (`08-openapi/01`): `@OpenAPIDefinition`/`@Info`,
+  `@APIResponses`, security scheme.
 
-Ordine suggerito di lavorazione (impatto × difficoltà): Mutiny → Transazioni
-avanzate → Dev Services → REST Client avanzato → Validation mapper →
-Test mocking → OpenAPI avanzato.
+**Coperti — estensioni opzionali:**
+- **`@ConfigMapping`** (`01-01`, `01-03`): gruppi profondi, `Optional`,
+  `List`, `Map`.
+- **Custom Health Check** (`05-health/01`): `data(...)`, `/q/health/group`.
+
+Ordine suggerito: Mutiny → Transazioni → Dev Services → REST Client →
+Validation mapper → Test mocking → OpenAPI.
