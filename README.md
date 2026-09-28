@@ -1,7 +1,7 @@
-# EX378 Labs — Simulatore d'esame Red Hat Quarkus
+# Quarkus Practice Labs
 
-Raccolta di laboratori in stile **EX378 — Red Hat Certified Specialist in
-Cloud-native Development**. Ogni laboratorio è una traccia d'esame
+Raccolta di laboratori pratici in stile esame di certificazione per lo
+sviluppo cloud-native con Quarkus. Ogni laboratorio è una traccia
 realistica: un progetto Quarkus parzialmente funzionante con casi di test
 JUnit che **falliscono** finché il task non è completato.
 
@@ -11,12 +11,11 @@ soluzioni non sono pubblicate.
 ## Requisiti
 
 - JDK **17+** (testato su Temurin 21)
-- Maven 3.9+
-- Un IDE con autocompletamento (VS Codium / IntelliJ) — come all'esame,
-  non serve ricordare gli import a memoria
+- Maven 3.9+ (o il wrapper `./mvnw` incluso nel progetto)
+- Un IDE con autocompletamento (VS Codium / IntelliJ): non serve
+  ricordare gli import a memoria
 
-Baseline: **Red Hat Build of Quarkus 3.8.x** (pin `3.8.1`), Java 17,
-Maven, package `com.redhat.ex378`.
+Baseline: **Quarkus 3.8.x** (pin `3.8.1`), Java 17, Maven.
 
 ## Struttura
 
@@ -24,7 +23,7 @@ Maven, package `com.redhat.ex378`.
 labs/
 └── 02-rest-api/               # cartella lab: NN-<slug>
     └── lab-rest-books/        # progetto Maven della traccia
-        ├── README.md          # il task d'esame
+        ├── README.md          # il task del laboratorio
         ├── pom.xml
         └── src/
 ```
@@ -73,9 +72,12 @@ git restore .
 
 Materiale didattico **originale**, creato per esercitazione. Non è
 materiale d'esame reale, non riproduce domande d'esame e non è
-affiliato, approvato o sponsorizzato da Red Hat. `Red Hat`, `EX378` e
-`Red Hat Build of Quarkus` sono marchi dei rispettivi proprietari e sono
-citati solo a scopo descrittivo.
+affiliato, approvato o sponsorizzato da Red Hat. `Red Hat` ed `EX378`
+sono marchi dei rispettivi proprietari, citati solo a scopo descrittivo.
+
+## Licenza
+
+Distribuito con licenza [MIT](LICENSE).
 
 ## Aggiungere un nuovo laboratorio
 

@@ -19,6 +19,8 @@ contenuti d'esame reali. Il nome del repo pubblico non deve usare i
 marchi della certificazione (es. `EX378`): usare un nome neutro tipo
 `quarkus-practice-labs`. Il README riporta la nota legale.
 
+Licenza: **MIT** (file `LICENSE`).
+
 ---
 
 ## 2. Baseline tecnico

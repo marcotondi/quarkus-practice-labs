@@ -1,4 +1,4 @@
-# EX378 — Laboratorio 2: REST API (JAX-RS / RESTEasy Reactive)
+# Laboratorio 02 — REST API (JAX-RS / RESTEasy Reactive)
 
 ## Scenario
 
@@ -51,7 +51,7 @@ comportamento atteso e test falliscono finché non completi il task.
 ./mvnw test
 ```
 
-Se volessi rigenerare il progetto da zero (equivalente dell'exam):
+Se volessi rigenerare il progetto da zero:
 
 ```bash
 mvn io.quarkus.platform:quarkus-maven-plugin:3.8.1:create \
