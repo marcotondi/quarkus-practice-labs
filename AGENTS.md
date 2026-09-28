@@ -138,8 +138,8 @@ Regole d'esame da rispettare nelle tracce:
 | 05-health | 01-liveness-readiness | traccia |
 | 06-security | 01-jwt-rbac | traccia |
 | 06-security | 02-oidc | pianificato |
-| 07-metrics | 01-counters-timers | pianificato |
-| 08-openapi | 01-api-documentation | pianificato |
+| 07-metrics | 01-counters-timers | traccia |
+| 08-openapi | 01-api-documentation | traccia |
 | 09-rest-client | 01-declarative-client | pianificato |
 | 10-messaging | 01-pipelines-ack | pianificato |
 

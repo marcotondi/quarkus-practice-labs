@@ -45,8 +45,8 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | 05-health | [01-liveness-readiness](labs/05-health/01-liveness-readiness/README.md) | disponibile |
 | 06-security | [01-jwt-rbac](labs/06-security/01-jwt-rbac/README.md) | disponibile |
 | 06-security | 02-oidc | pianificato |
-| 07-metrics | 01-counters-timers | pianificato |
-| 08-openapi | 01-api-documentation | pianificato |
+| 07-metrics | [01-counters-timers](labs/07-metrics/01-counters-timers/README.md) | disponibile |
+| 08-openapi | [01-api-documentation](labs/08-openapi/01-api-documentation/README.md) | disponibile |
 | 09-rest-client | 01-declarative-client | pianificato |
 | 10-messaging | 01-pipelines-ack | pianificato |
 
