@@ -1,4 +1,4 @@
-package com.redhat.ex378.rest;
+package io.github.marcotondi.labs.rest;
 
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;

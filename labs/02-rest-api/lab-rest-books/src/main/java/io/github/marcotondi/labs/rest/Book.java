@@ -1,8 +1,8 @@
-package com.redhat.ex378.rest;
+package io.github.marcotondi.labs.rest;
 
 /**
  * Entità del dominio. In questo laboratorio vive in memoria (nessuna
- * persistenza): in un task reale EX378 sarebbe un'entità Hibernate ORM.
+ * persistenza): in un task reale sarebbe un'entità Hibernate ORM.
  * NON modificare questo file: è la "logica di business" già funzionante.
  */
 public class Book {

@@ -30,8 +30,8 @@ Licenza: **MIT** (file `LICENSE`).
 | Red Hat Build of Quarkus | **3.8.x** — pin a `3.8.1` |
 | Java | target **17** (`maven.compiler.release=17`), gira su JDK 21 |
 | Build | Maven 3.9+ |
-| Group id | `com.redhat.ex378` |
-| Package | `com.redhat.ex378.<dominio>` |
+| Group id | `io.github.marcotondi.labs` |
+| Package | `io.github.marcotondi.labs.<dominio>` |
 
 > **Nota storica**: Quarkus non ha mai rilasciato una `3.8.0.Final`
 > (esisteva solo `3.8.0.CR1`). La prima finale della linea 3.8 è la

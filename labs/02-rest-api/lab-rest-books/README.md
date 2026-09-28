@@ -55,8 +55,8 @@ Se volessi rigenerare il progetto da zero:
 
 ```bash
 mvn io.quarkus.platform:quarkus-maven-plugin:3.8.1:create \
-  -DprojectGroupId=com.redhat.ex378 -DprojectArtifactId=lab-rest-books \
-  -DclassName=com.redhat.ex378.rest.BookResource -Dpath=/api/books \
+  -DprojectGroupId=io.github.marcotondi.labs -DprojectArtifactId=lab-rest-books \
+  -DclassName=io.github.marcotondi.labs.rest.BookResource -Dpath=/api/books \
   -Dextensions=resteasy-reactive-jackson,hibernate-validator
 ```
 

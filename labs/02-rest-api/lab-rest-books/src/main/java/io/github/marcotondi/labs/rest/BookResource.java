@@ -1,4 +1,4 @@
-package com.redhat.ex378.rest;
+package io.github.marcotondi.labs.rest;
 
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

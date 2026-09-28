@@ -1,4 +1,4 @@
-package com.redhat.ex378.rest;
+package io.github.marcotondi.labs.rest;
 
 /**
  * Eccezione da lanciare quando un libro richiesto non esiste.
