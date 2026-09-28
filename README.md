@@ -35,11 +35,11 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | Argomento | Esercizio | Stato |
 |-----------|-----------|-------|
 | 01-configuration | [01-typed-config](labs/01-configuration/01-typed-config/README.md) | disponibile |
-| 01-configuration | 02-overrides-configsource | pianificato |
+| 01-configuration | [02-overrides-configsource](labs/01-configuration/02-overrides-configsource/README.md) | disponibile |
 | 02-rest-api | [01-crud-api](labs/02-rest-api/01-crud-api/README.md) | disponibile |
-| 02-rest-api | 02-exception-mapping | pianificato |
+| 02-rest-api | [02-exception-mapping](labs/02-rest-api/02-exception-mapping/README.md) | disponibile |
 | 03-persistence | [01-panache-crud](labs/03-persistence/01-panache-crud/README.md) | disponibile |
-| 03-persistence | 02-repository-relations | pianificato |
+| 03-persistence | [02-repository-relations](labs/03-persistence/02-repository-relations/README.md) | disponibile |
 | 04-fault-tolerance | [01-resilience-policies](labs/04-fault-tolerance/01-resilience-policies/README.md) | disponibile |
 | 04-fault-tolerance | 02-bulkhead-async | pianificato |
 | 05-health | [01-liveness-readiness](labs/05-health/01-liveness-readiness/README.md) | disponibile |

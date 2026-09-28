@@ -128,11 +128,11 @@ Regole d'esame da rispettare nelle tracce:
 | Argomento | Esercizio | Stato |
 |-----------|-----------|-------|
 | 01-configuration | 01-typed-config | **traccia + soluzione** |
-| 01-configuration | 02-overrides-configsource | pianificato |
+| 01-configuration | 02-overrides-configsource | traccia |
 | 02-rest-api | 01-crud-api | **traccia + soluzione** |
-| 02-rest-api | 02-exception-mapping | pianificato |
+| 02-rest-api | 02-exception-mapping | traccia |
 | 03-persistence | 01-panache-crud | traccia |
-| 03-persistence | 02-repository-relations | pianificato |
+| 03-persistence | 02-repository-relations | traccia |
 | 04-fault-tolerance | 01-resilience-policies | traccia |
 | 04-fault-tolerance | 02-bulkhead-async | pianificato |
 | 05-health | 01-liveness-readiness | traccia |
