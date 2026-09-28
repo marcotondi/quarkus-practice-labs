@@ -135,6 +135,7 @@ Regole d'esame da rispettare nelle tracce:
 | 02-rest-api | 03-bean-validation | traccia |
 | 03-persistence | 01-panache-crud | traccia |
 | 03-persistence | 02-repository-relations | traccia |
+| 03-persistence | 03-repository-crud | traccia |
 | 04-fault-tolerance | 01-resilience-policies | traccia |
 | 04-fault-tolerance | 02-bulkhead-async | traccia |
 | 05-health | 01-liveness-readiness | traccia |

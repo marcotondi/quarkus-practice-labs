@@ -42,6 +42,7 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | 02-rest-api | [03-bean-validation](labs/02-rest-api/03-bean-validation/README.md) | disponibile |
 | 03-persistence | [01-panache-crud](labs/03-persistence/01-panache-crud/README.md) | disponibile |
 | 03-persistence | [02-repository-relations](labs/03-persistence/02-repository-relations/README.md) | disponibile |
+| 03-persistence | [03-repository-crud](labs/03-persistence/03-repository-crud/README.md) | disponibile |
 | 04-fault-tolerance | [01-resilience-policies](labs/04-fault-tolerance/01-resilience-policies/README.md) | disponibile |
 | 04-fault-tolerance | [02-bulkhead-async](labs/04-fault-tolerance/02-bulkhead-async/README.md) | disponibile |
 | 05-health | [01-liveness-readiness](labs/05-health/01-liveness-readiness/README.md) | disponibile |
