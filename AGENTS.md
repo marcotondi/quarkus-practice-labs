@@ -127,7 +127,7 @@ Regole d'esame da rispettare nelle tracce:
 | 01 | `config-profiles` | Configurazione e profili (`%dev`/`%test`/`%prod`) | **traccia + soluzione** |
 | 02 | `rest-api` | REST API JAX-RS, DTO, validation, status code | **traccia + soluzione** |
 | 03 | `persistence-panache` | Hibernate ORM + Panache | traccia |
-| 04 | `fault-tolerance` | MicroProfile Fault Tolerance (`@Retry`, `@Timeout`, `@CircuitBreaker`, `@Fallback`) | pianificato |
+| 04 | `fault-tolerance` | MicroProfile Fault Tolerance (`@Retry`, `@Timeout`, `@CircuitBreaker`, `@Fallback`) | traccia |
 | 05 | `health-check` | SmallRye Health (liveness/readiness) | pianificato |
 | 06 | `security-jwt` | SmallRye JWT, RBAC (`@RolesAllowed`) | pianificato |
 
