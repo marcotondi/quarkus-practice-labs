@@ -129,7 +129,7 @@ Regole d'esame da rispettare nelle tracce:
 | 03 | `persistence-panache` | Hibernate ORM + Panache | traccia |
 | 04 | `fault-tolerance` | MicroProfile Fault Tolerance (`@Retry`, `@Timeout`, `@CircuitBreaker`, `@Fallback`) | traccia |
 | 05 | `health-check` | SmallRye Health (liveness/readiness) | traccia |
-| 06 | `security-jwt` | SmallRye JWT, RBAC (`@RolesAllowed`) | pianificato |
+| 06 | `security-jwt` | SmallRye JWT, RBAC (`@RolesAllowed`) | traccia |
 
 Stato possibili: `pianificato` → `traccia` → `traccia + soluzione`.
 

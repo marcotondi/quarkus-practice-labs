@@ -39,7 +39,7 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | 03 | [03-persistence-panache](labs/03-persistence-panache/lab-product-catalog/README.md) | Hibernate ORM + Panache (CRUD, query, transazioni) | traccia disponibile |
 | 04 | [04-fault-tolerance](labs/04-fault-tolerance/lab-fault-tolerance/README.md) | MicroProfile Fault Tolerance (@Retry, @Timeout, @CircuitBreaker, @Fallback) | traccia disponibile |
 | 05 | [05-health-check](labs/05-health-check/lab-health-check/README.md) | SmallRye Health (liveness/readiness, @Health) | traccia disponibile |
-| 06 | `06-security-jwt` | SmallRye JWT, RBAC | pianificato |
+| 06 | [06-security-jwt](labs/06-security-jwt/lab-secured-api/README.md) | SmallRye JWT, RBAC (@RolesAllowed) | traccia disponibile |
 
 ## Come usare un laboratorio
 
