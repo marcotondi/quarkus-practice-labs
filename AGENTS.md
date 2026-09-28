@@ -54,22 +54,25 @@ quarkus-ex378/                     # root repo — su GitHub
 ├── AGENTS.md                      # questo file
 ├── .gitignore
 └── labs/
-    └── NN-<slug>/                 # un lab = una cartella
-        └── <progetto-maven>/      # uno o più progetti Maven del lab
-            ├── pom.xml
-            ├── README.md          # LA TRACCIA (task d'esame)
-            └── src/
+    └── NN-<topic>/                # argomento
+        ├── EE-<feature>/          # esercizio (progetto Maven) — 3-4 feature
+        │   ├── pom.xml
+        │   ├── README.md          # LA TRACCIA (task d'esame)
+        │   └── src/
+        └── EE-<altra-feature>/    # altro esercizio dello stesso argomento
 ```
 
 Regole di naming:
-- **Cartella lab**: `NN-<slug>` — due cifre, kebab-case.
-  Esempi: `01-config-profiles`, `02-rest-api`, `03-persistence-panache`.
-- **Progetto Maven dentro il lab**: kebab-case senza numero.
-  Esempi: `lab-rest-books`, `lab-greetings-api`.
-  Se un lab richiede più progetti, si mettono più cartelle sorelle
-  dentro `NN-<slug>/`.
-- **`artifactId` Maven** di un progetto traccia: `lab-<slug-progetto>`.
-- **Branch soluzione**: `sol/NN-<slug>`.
+- **Argomento**: `NN-<topic>` — due cifre, kebab-case, sostantivo breve.
+  Esempi: `01-configuration`, `02-rest-api`, `07-metrics`.
+- **Esercizio**: `EE-<feature>` — due cifre + slug kebab-case.
+  Più esercizi = più cartelle sorelle dentro l'argomento. Ogni esercizio
+  è un progetto Maven autonomo (traccia + test) che copre 3-4 feature.
+  Esempi: `01-typed-config`, `02-overrides-configsource`.
+- **`artifactId` Maven**: `lab-<feature>` (es. `lab-typed-config`).
+- **Package Java**: `io.github.marcotondi.labs.<topic>`
+  (es. `io.github.marcotondi.labs.configuration`).
+- **Branch soluzione**: `sol/EE-<feature>` (es. `sol/01-typed-config`).
 
 Vietato usare spazi o maiuscole nei nomi di cartella (rompe path e URL).
 
@@ -79,7 +82,7 @@ Vietato usare spazi o maiuscole nei nomi di cartella (rompe path e URL).
 
 - `main` contiene **solo tracce**: il codice di partenza con i `TODO` e i
   test che falliscono. È il branch che si pusha su GitHub.
-- Le soluzioni vivono su branch **locali** `sol/NN-<slug>`, che **non si
+- Le soluzioni vivono su branch **locali** `sol/EE-<feature>`, che **non si
   pushano mai**. Il comando sicuro di pubblicazione è:
   ```bash
   git push origin main
@@ -88,7 +91,7 @@ Vietato usare spazi o maiuscole nei nomi di cartella (rompe path e URL).
   ```bash
   git restore .
   ```
-- Per iniziare un nuovo lab: `git switch -c sol/NN-<slug>` dal `main`,
+- Per iniziare un nuovo lab: `git switch -c sol/EE-<feature>` dal `main`,
   risolvere, committare sul branch, poi tornare su `main`.
 
 Motivo: i colleghi ricevono le tracce pulite; le soluzioni non escono
@@ -120,16 +123,25 @@ Regole d'esame da rispettare nelle tracce:
 
 ---
 
-## 6. Catalogo laboratori
+## 6. Catalogo argomenti ed esercizi
 
-| N. | Slug | Argomento | Stato |
-|----|------|-----------|-------|
-| 01 | `config-profiles` | Configurazione e profili (`%dev`/`%test`/`%prod`) | **traccia + soluzione** |
-| 02 | `rest-api` | REST API JAX-RS, DTO, validation, status code | **traccia + soluzione** |
-| 03 | `persistence-panache` | Hibernate ORM + Panache | traccia |
-| 04 | `fault-tolerance` | MicroProfile Fault Tolerance (`@Retry`, `@Timeout`, `@CircuitBreaker`, `@Fallback`) | traccia |
-| 05 | `health-check` | SmallRye Health (liveness/readiness) | traccia |
-| 06 | `security-jwt` | SmallRye JWT, RBAC (`@RolesAllowed`) | traccia |
+| Argomento | Esercizio | Stato |
+|-----------|-----------|-------|
+| 01-configuration | 01-typed-config | **traccia + soluzione** |
+| 01-configuration | 02-overrides-configsource | pianificato |
+| 02-rest-api | 01-crud-api | **traccia + soluzione** |
+| 02-rest-api | 02-exception-mapping | pianificato |
+| 03-persistence | 01-panache-crud | traccia |
+| 03-persistence | 02-repository-relations | pianificato |
+| 04-fault-tolerance | 01-resilience-policies | traccia |
+| 04-fault-tolerance | 02-bulkhead-async | pianificato |
+| 05-health | 01-liveness-readiness | traccia |
+| 06-security | 01-jwt-rbac | traccia |
+| 06-security | 02-oidc | pianificato |
+| 07-metrics | 01-counters-timers | pianificato |
+| 08-openapi | 01-api-documentation | pianificato |
+| 09-rest-client | 01-declarative-client | pianificato |
+| 10-messaging | 01-pipelines-ack | pianificato |
 
 Stato possibili: `pianificato` → `traccia` → `traccia + soluzione`.
 
