@@ -52,13 +52,13 @@ cd labs/02-rest-api/lab-rest-books
 cat README.md
 
 # 3. verifica che i test falliscano (è lo stato di partenza)
-mvn test
+./mvnw test
 
 # 4. lavora sul codice, poi riprova finché tutti i test passano
-mvn test
+./mvnw test
 
 # 5. opzionale: avvia l'app in modalità dev
-mvn quarkus:dev     # http://localhost:8080
+./mvnw quarkus:dev     # http://localhost:8080
 ```
 
 ## Come resettare una traccia
@@ -69,10 +69,18 @@ Dopo aver lavorato, per tornare al codice di partenza:
 git restore .
 ```
 
+## Nota legale
+
+Materiale didattico **originale**, creato per esercitazione. Non è
+materiale d'esame reale, non riproduce domande d'esame e non è
+affiliato, approvato o sponsorizzato da Red Hat. `Red Hat`, `EX378` e
+`Red Hat Build of Quarkus` sono marchi dei rispettivi proprietari e sono
+citati solo a scopo descrittivo.
+
 ## Aggiungere un nuovo laboratorio
 
 1. Crea `labs/NN-<slug>/<progetto-maven>/`.
 2. Scrivi la traccia seguendo la checklist in [AGENTS.md](AGENTS.md) §5.
-3. Verifica che `mvn test` fallisca sul codice di partenza.
+3. Verifica che `./mvnw test` fallisca sul codice di partenza.
 4. Aggiorna l'indice in questo README e il catalogo in AGENTS.md.
 5. Commit su `main` (solo la traccia, mai la soluzione).

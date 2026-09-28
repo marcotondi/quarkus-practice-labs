@@ -45,10 +45,10 @@ comportamento atteso e test falliscono finché non completi il task.
 
 ```bash
 # Avvio in modalità dev (hot reload)
-mvn quarkus:dev
+./mvnw quarkus:dev
 
 # Esecuzione dei test dell'esaminatore (OBBLIGATORIO: devono passare TUTTI)
-mvn test
+./mvnw test
 ```
 
 Se volessi rigenerare il progetto da zero (equivalente dell'exam):

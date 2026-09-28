@@ -14,7 +14,10 @@ Certified Specialist in Cloud-native Development**. Ogni laboratorio è una
 JUnit che falliscono, con un task da completare.
 
 Il repo pubblicato su GitHub contiene **solo le tracce**. Le soluzioni
-restano in locale (vedi §4).
+restano in locale (vedi §4). Il materiale è originale e non riproduce
+contenuti d'esame reali. Il nome del repo pubblico non deve usare i
+marchi della certificazione (es. `EX378`): usare un nome neutro tipo
+`quarkus-practice-labs`. Il README riporta la nota legale.
 
 ---
 
@@ -35,6 +38,9 @@ restano in locale (vedi §4).
 > In 3.8 l'estensione REST è ancora `quarkus-resteasy-reactive` /
 > `quarkus-resteasy-reactive-jackson` (il rename a `quarkus-rest` arriva
 > in 3.9+).
+
+Ogni progetto include il **Maven wrapper**: si usa `./mvnw` e non serve
+Maven installato sulla macchina. I comandi documentati usano `./mvnw`.
 
 ---
 
@@ -101,9 +107,9 @@ Ogni laboratorio **deve** contenere:
    modificare sono marcati "NON modificare" e restano completi.
 4. **Test JUnit** (`@QuarkusTest`) dell'esaminatore che **devono
    fallire** sul codice di partenza. Requisito verificato: prima di
-   pubblicare una traccia, eseguire `mvn test` e confermare che i test
+   pubblicare una traccia, eseguire `./mvnw test` e confermare che i test
    falliscano.
-5. **Comandi** di avvio (`mvn quarkus:dev`) e test (`mvn test`).
+5. **Comandi** di avvio (`./mvnw quarkus:dev`) e test (`./mvnw test`).
 
 Regole d'esame da rispettare nelle tracce:
 - Niente dipendenze extra, niente Lombok, niente framework aggiunti dal
@@ -131,7 +137,7 @@ Stato possibili: `pianificato` → `traccia` → `traccia + soluzione`.
 
 Quando il candidato invia una soluzione:
 
-1. **Eseguire davvero i test**: `mvn test` nel progetto del lab. Riportare
+1. **Eseguire davvero i test**: `./mvnw test` nel progetto del lab. Riportare
    l'esito reale (non simulato).
 2. **Diagnosi onesta**: se un test fallisce, stabilire se la colpa è del
    codice del candidato, della traccia, o di un comportamento del
