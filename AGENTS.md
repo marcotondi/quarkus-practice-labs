@@ -134,14 +134,14 @@ Regole d'esame da rispettare nelle tracce:
 | 03-persistence | 01-panache-crud | traccia |
 | 03-persistence | 02-repository-relations | traccia |
 | 04-fault-tolerance | 01-resilience-policies | traccia |
-| 04-fault-tolerance | 02-bulkhead-async | pianificato |
+| 04-fault-tolerance | 02-bulkhead-async | traccia |
 | 05-health | 01-liveness-readiness | traccia |
 | 06-security | 01-jwt-rbac | traccia |
-| 06-security | 02-oidc | pianificato |
+| 06-security | 02-oidc | traccia |
 | 07-metrics | 01-counters-timers | traccia |
 | 08-openapi | 01-api-documentation | traccia |
-| 09-rest-client | 01-declarative-client | pianificato |
-| 10-messaging | 01-pipelines-ack | pianificato |
+| 09-rest-client | 01-declarative-client | traccia |
+| 10-messaging | 01-pipelines-ack | traccia |
 
 Stato possibili: `pianificato` → `traccia` → `traccia + soluzione`.
 
