@@ -34,8 +34,8 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 
 | N. | Lab | Argomento | Stato |
 |----|-----|-----------|-------|
+| 01 | [01-config-profiles](labs/01-config-profiles/lab-catalog-config/README.md) | Configurazione e profili (`%dev`/`%test`/`%prod`) | traccia disponibile |
 | 02 | [02-rest-api](labs/02-rest-api/lab-rest-books/README.md) | REST API JAX-RS: DTO, validation, status code | traccia disponibile |
-| 01 | `01-config-profiles` | Configurazione e profili | pianificato |
 | 03 | `03-persistence-panache` | Hibernate ORM + Panache | pianificato |
 | 04 | `04-fault-tolerance` | MicroProfile Fault Tolerance | pianificato |
 | 05 | `05-health-check` | SmallRye Health | pianificato |

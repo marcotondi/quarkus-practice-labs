@@ -124,7 +124,7 @@ Regole d'esame da rispettare nelle tracce:
 
 | N. | Slug | Argomento | Stato |
 |----|------|-----------|-------|
-| 01 | `config-profiles` | Configurazione e profili (`%dev`/`%test`/`%prod`) | pianificato |
+| 01 | `config-profiles` | Configurazione e profili (`%dev`/`%test`/`%prod`) | **traccia + soluzione** |
 | 02 | `rest-api` | REST API JAX-RS, DTO, validation, status code | **traccia + soluzione** |
 | 03 | `persistence-panache` | Hibernate ORM + Panache | pianificato |
 | 04 | `fault-tolerance` | MicroProfile Fault Tolerance (`@Retry`, `@Timeout`, `@CircuitBreaker`, `@Fallback`) | pianificato |
