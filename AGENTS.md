@@ -48,8 +48,8 @@ labs/
 
 ## 5. Checklist di una traccia
 
-1. **`README.md`**: scenario, comportamento atteso, istruzioni passo-passo,
-   comandi, regole, rubrica.
+1. **`README.md`**: scenario, comportamento atteso, comandi, regole,
+   rubrica. Il livello di guida è **progressivo** (vedi sotto).
 2. Progetto Maven che compila e si avvia.
 3. Codice parziale con `// TODO: Implementare qui`; i file marcati
    "NON modificare" restano completi.
@@ -59,6 +59,13 @@ labs/
 
 Regole: niente dipendenze extra / Lombok / framework aggiunti dal
 candidato; test indipendenti dall'ordine di esecuzione.
+
+**Scaffold progressivo del README.** Il README serve a far *ragionare*, non a
+dettare la soluzione. Solo il **primo** esercizio di un argomento (o dei primi
+argomenti) può avere istruzioni passo-passo e snippet di codice pronti. Dagli
+esercizi successivi in poi: niente elenco di passi, niente codice finale nel
+README; restano scenario, comportamento atteso, vincoli e rubrica, e il
+candidato deduce da sé classi, annotazioni e proprietà.
 
 ## 6. Catalogo (20 esercizi / 11 argomenti)
 
