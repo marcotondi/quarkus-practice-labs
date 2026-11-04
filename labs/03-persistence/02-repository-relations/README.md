@@ -32,7 +32,9 @@ l'accesso ai dati con il pattern **`PanacheRepository`** e gli endpoint.
 4. **Verifica** che i test dell'esaminatore passino.
 
 Il `left join fetch` è importante: senza, i libri (lazy) non sarebbero
-disponibili fuori dalla transazione.
+disponibili fuori dalla transazione. Il test `repositoryLoadsBooksEagerly`
+lo verifica chiamando il repository fuori transazione e controllando che
+`books` sia già inizializzata (`Hibernate.isInitialized`).
 
 ## Comandi
 
@@ -52,7 +54,7 @@ curl http://localhost:8080/api/authors
 
 ## Criteri di valutazione (rubrica esaminatore)
 
-- **Test** (70%): tutti e 4 i casi superati.
+- **Test** (70%): tutti e 5 i casi superati.
 - **Correttezza** (30%): pattern `PanacheRepository`, `left join fetch`
   (niente lazy fuori transazione), cascade corretto, `404` corretti.
 
