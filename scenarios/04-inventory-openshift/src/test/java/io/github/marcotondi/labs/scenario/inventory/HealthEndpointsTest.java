@@ -19,7 +19,7 @@ class HealthEndpointsTest {
                 .statusCode(200)
                 .body("status", equalTo("UP"))
                 .body("checks.name", hasItem("inventory-memory"))
-                .body("checks[0].data.freeMemoryBytes", notNullValue());
+                .body("checks.find { it.name == 'inventory-memory' }.data.freeMemoryBytes", notNullValue());
     }
 
     @Test
@@ -30,7 +30,7 @@ class HealthEndpointsTest {
                 .statusCode(200)
                 .body("status", equalTo("UP"))
                 .body("checks.name", hasItem("inventory-database"))
-                .body("checks[0].data.database", equalTo("reachable"));
+                .body("checks.find { it.name == 'inventory-database' }.data.database", equalTo("reachable"));
     }
 
     @Test

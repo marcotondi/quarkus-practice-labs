@@ -83,11 +83,18 @@ grep -n "kind: ConfigMap" target/kubernetes/openshift.yml
 grep -n "livenessProbe\|readinessProbe" target/kubernetes/openshift.yml
 ```
 
-Build dell'immagine container con Podman:
+Build dell'immagine container con Podman, dopo `./mvnw package`:
+
+```bash
+podman build -f src/main/docker/Dockerfile.jvm -t scenario-04-inventory-openshift:local .
+```
+
+In alternativa il plugin Quarkus può orchestrare la build, ma il
+risultato dipende dal builder locale:
 
 ```bash
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
-./mvnw package -Dquarkus.container-image.build=true
+./mvnw package -Dquarkus.container-image.build=true -Dquarkus.container-image.builder=docker
 ```
 
 Avvio locale:
