@@ -2,7 +2,7 @@
 
 ## 0. Stato del documento
 
-- **Stato:** piano approvato come baseline; implementazione non ancora avviata.
+- **Stato:** scenario 01 completato (traccia + soluzione locale verificate); scenari 02–05 pianificati.
 - **Cartella confermata:** `scenarios/`, allo stesso livello di `labs/`.
 - **Baseline tecnica:** Quarkus **3.8.1**, Java **17**, Maven con wrapper `./mvnw`.
 - **Obiettivo:** aggiungere cinque progetti hands-on multi-dominio in stile esame EX378.
@@ -327,15 +327,24 @@ Policy di resilienza da rendere esplicite:
 
 ### 6.5 Sottotask di implementazione
 
-- [ ] Creare progetto, POM, wrapper e configurazione H2.
-- [ ] Creare modello, DTO e classi dello scheletro senza commenti guida.
-- [ ] Implementare il downstream in-process con modalità successo, errore e ritardo, contatore chiamate e reset.
-- [ ] Scrivere i test del contratto REST e della persistenza.
-- [ ] Scrivere i test di retry, timeout, circuit breaker e readiness.
-- [ ] Scrivere il README con tutti i valori numerici e gli schemi JSON.
-- [ ] Verificare il rosso sullo scheletro.
-- [ ] Implementare e verificare la soluzione sul branch locale.
-- [ ] Ripetere i test almeno due volte per controllare la stabilità temporale.
+- [x] Creare progetto, POM, wrapper e configurazione H2.
+- [x] Creare modello, DTO e classi dello scheletro senza commenti guida.
+- [x] Implementare il downstream in-process con modalità successo, errore e ritardo, contatore chiamate e reset.
+- [x] Scrivere i test del contratto REST e della persistenza.
+- [x] Scrivere i test di retry, timeout, circuit breaker e readiness.
+- [x] Scrivere il README con tutti i valori numerici e gli schemi JSON.
+- [x] Verificare il rosso sullo scheletro.
+- [x] Implementare e verificare la soluzione sul branch locale.
+- [x] Ripetere i test almeno due volte per controllare la stabilità temporale.
+
+### 6.6 Esiti e deviazioni registrate
+
+- Rosso della traccia: 9 test su 9 falliti, tutti per `UnsupportedOperationException` nel service, nessun errore di compilazione o di avvio.
+- Verde della soluzione: 9 test su 9 superati, suite ripetuta tre volte senza fallimenti intermittenti.
+- `Order` è parola riservata in H2: l'entità usa `@Table(name = "orders")`. La correzione è nella traccia, non nella soluzione.
+- Il gateway simulato deve valutare il fallimento **prima** del ritardo, altrimenti le richieste rimaste in volo dal caso di timeout consumano i fallimenti programmati del caso successivo.
+- Il nome effettivo del circuito non è affidabile per il readiness check: la traccia richiede il nome esplicito `payment-gateway`, ottenibile con `@CircuitBreakerName`. Il README lo documenta come requisito, non come soluzione.
+- Il timeout di 800 ms con retry produce quattro tentativi: il test accetta solo l'esito `503` e non il numero di chiamate, così non è legato ai tempi.
 
 ---
 
@@ -744,13 +753,13 @@ Non segnare `traccia + soluzione` senza avere eseguito realmente i test.
 
 ### Fase A — Baseline e primo scenario
 
-- [ ] Confermare che `main` contiene solo le tracce.
-- [ ] Creare lo scaffold `scenarios/01-payment-gateway`.
-- [ ] Completare README, codice e test dello scenario 01.
-- [ ] Verificare rosso e verde secondo il protocollo.
-- [ ] Correggere eventuali problemi del formato prima di replicarlo.
+- [x] Confermare che `main` contiene solo le tracce.
+- [x] Creare lo scaffold `scenarios/01-payment-gateway`.
+- [x] Completare README, codice e test dello scenario 01.
+- [x] Verificare rosso e verde secondo il protocollo.
+- [x] Correggere i problemi di formato riscontrati (`@Table` per parola riservata, ordine del ritardo nello stub, nome esplicito del circuito).
 
-**Stima:** 90–120 minuti.
+**Stima:** 90–120 minuti. **Esito:** completato, 9 test rossi sulla traccia e verdi sulla soluzione locale `sol/scenario-01-payment-gateway`.
 
 ### Fase B — Scenari REST/sicurezza/configurazione
 
