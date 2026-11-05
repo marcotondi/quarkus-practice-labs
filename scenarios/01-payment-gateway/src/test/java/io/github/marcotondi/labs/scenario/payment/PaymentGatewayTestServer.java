@@ -60,6 +60,7 @@ public class PaymentGatewayTestServer implements QuarkusTestResourceLifecycleMan
             server.createContext("/payments", exchange -> {
                 calls.incrementAndGet();
                 exchange.getRequestBody().readAllBytes();
+                boolean failure = remainingFailures.getAndUpdate(n -> n > 0 ? n - 1 : 0) > 0;
                 if (delayMs > 0) {
                     try {
                         Thread.sleep(delayMs);
@@ -67,7 +68,7 @@ public class PaymentGatewayTestServer implements QuarkusTestResourceLifecycleMan
                         Thread.currentThread().interrupt();
                     }
                 }
-                if (remainingFailures.getAndUpdate(n -> n > 0 ? n - 1 : 0) > 0) {
+                if (failure) {
                     respond(exchange, 500, "{\"error\":\"GATEWAY_ERROR\"}");
                 } else {
                     respond(exchange, 200, "{\"paymentId\":\"pay-1\",\"status\":\"APPROVED\"}");

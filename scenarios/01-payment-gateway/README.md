@@ -99,12 +99,10 @@ quarta richiesta consecutiva fallita il circuito si apre e le richieste
 successive non devono più raggiungere il gateway.
 
 Il readiness check si chiama `payment-gateway` e deve restituire `DOWN`
-quando il circuito è `OPEN`. Il circuito usato dalla policy è
-identificato dal nome MicroProfile Fault Tolerance del metodo protetto:
-
-```text
-io.github.marcotondi.labs.scenario.payment.PaymentGateway/charge
-```
+quando il circuito è `OPEN`. Il circuito della policy deve essere
+identificato con lo stesso nome, `payment-gateway`, così da poter essere
+ispezionato a runtime tramite l'API di manutenzione di MicroProfile Fault
+Tolerance.
 
 Il progetto include già `PaymentUnavailableException` e `ErrorResponse`.
 Come tradurre l'eccezione in risposta HTTP è una scelta implementativa.
