@@ -1,6 +1,9 @@
 package io.github.marcotondi.labs.scenario.reactivepipeline;
 
+import io.quarkus.hibernate.reactive.panache.Panache;
+import io.quarkus.vertx.core.runtime.context.VertxContextSafetyToggle;
 import io.smallrye.mutiny.Uni;
+import io.vertx.core.Vertx;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -23,13 +26,19 @@ import java.util.concurrent.ConcurrentHashMap;
 @Produces(MediaType.APPLICATION_JSON)
 public class ProcessedOrdersAudit {
 
-    private final Map<String, Boolean> received = new ConcurrentHashMap<>();
+    private final Map<String, Boolean> persisted = new ConcurrentHashMap<>();
+    private final Map<String, Integer> deliveries = new ConcurrentHashMap<>();
 
     @Incoming("orders-processed")
     public Uni<Void> consume(TransactionEvent event) {
-        return Transaction.<Transaction>find("transactionId", event.transactionId).firstResult()
+        if (Vertx.currentContext() != null) {
+            VertxContextSafetyToggle.setContextSafe(Vertx.currentContext(), true);
+        }
+        return Panache.withSession(
+                        () -> Transaction.<Transaction>find("transactionId", event.transactionId).firstResult())
                 .map(transaction -> {
-                    received.put(event.transactionId, transaction != null);
+                    deliveries.merge(event.transactionId, 1, Integer::sum);
+                    persisted.put(event.transactionId, transaction != null);
                     return (Void) null;
                 });
     }
@@ -37,12 +46,13 @@ public class ProcessedOrdersAudit {
     @GET
     @Path("/{transactionId}")
     public Response get(@PathParam("transactionId") String transactionId) {
-        Boolean persisted = received.get(transactionId);
-        if (persisted == null) {
+        Integer count = deliveries.get(transactionId);
+        if (count == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(Map.of(
                 "transactionId", transactionId,
-                "persistedWhenReceived", persisted)).build();
+                "deliveries", count,
+                "persistedWhenReceived", persisted.get(transactionId))).build();
     }
 }

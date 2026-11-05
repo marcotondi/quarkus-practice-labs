@@ -19,6 +19,14 @@ class ReactivePipelineTest {
                 .when().post("/transactions");
     }
 
+    private void pause() {
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
     private Response awaitTransaction(String transactionId) {
         for (int i = 0; i < 50; i++) {
             Response response = given()
@@ -66,6 +74,7 @@ class ReactivePipelineTest {
         awaitAudit("TX-1")
                 .then()
                 .statusCode(200)
+                .body("deliveries", equalTo(1))
                 .body("persistedWhenReceived", equalTo(true));
     }
 
@@ -74,6 +83,8 @@ class ReactivePipelineTest {
         submit("{\"transactionId\":\"TX-INVALID\",\"amount\":-5.00,\"currency\":\"EUR\"}")
                 .then()
                 .statusCode(202);
+
+        pause();
 
         given()
                 .when().get("/audit/TX-INVALID")
@@ -91,14 +102,19 @@ class ReactivePipelineTest {
         submit("{\"transactionId\":\"TX-DUP\",\"amount\":10.00,\"currency\":\"EUR\"}")
                 .then()
                 .statusCode(202);
+        awaitAudit("TX-DUP").then().statusCode(200).body("deliveries", equalTo(1));
         awaitTransaction("TX-DUP").then().statusCode(200);
 
         submit("{\"transactionId\":\"TX-DUP\",\"amount\":10.00,\"currency\":\"EUR\"}")
                 .then()
                 .statusCode(202);
 
-        Response response = awaitTransaction("TX-DUP");
-        assertEquals(1, Transaction.count("transactionId", "TX-DUP"));
+        pause();
+
+        awaitAudit("TX-DUP")
+                .then()
+                .statusCode(200)
+                .body("deliveries", equalTo(1));
     }
 
     @Test
