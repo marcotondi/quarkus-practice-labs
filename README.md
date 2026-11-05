@@ -14,6 +14,9 @@ soluzioni non sono pubblicate.
 - Maven 3.9+ (o il wrapper `./mvnw` incluso nel progetto)
 - Un IDE con autocompletamento (VS Codium / IntelliJ): non serve
   ricordare gli import a memoria
+- **Podman** o Docker solo per gli scenari che usano PostgreSQL reale
+  (`scenarios/05-reactive-pipeline`) e per la build delle immagini
+  (`scenarios/04-inventory-openshift`)
 
 Baseline: **Quarkus 3.8.x** (pin `3.8.1`), Java 17, Maven.
 
@@ -26,6 +29,11 @@ labs/
         ├── README.md          # il task del laboratorio
         ├── pom.xml
         └── src/
+scenarios/
+└── 01-payment-gateway/        # scenario multi-dominio (progetto Maven)
+    ├── README.md              # contratto, senza passi guidati
+    ├── pom.xml
+    └── src/
 ```
 
 Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
@@ -54,6 +62,30 @@ Convenzioni e decisioni complete: vedi [AGENTS.md](AGENTS.md).
 | 09-rest-client | [02-response-exception-mapper](labs/09-rest-client/02-response-exception-mapper/README.md) | disponibile |
 | 10-messaging | [01-pipelines-ack](labs/10-messaging/01-pipelines-ack/README.md) | disponibile |
 | 11-observability | [01-tracing-baggage](labs/11-observability/01-tracing-baggage/README.md) | disponibile |
+
+## Scenari avanzati (multi-dominio)
+
+Gli scenari in `scenarios/` combinano almeno tre domini EX378. A
+differenza di `labs/` **non contengono passi guidati né snippet**: il
+README descrive il contratto completo (endpoint, codici di stato,
+property esatte, policy) e i test lo verificano.
+
+| Scenario | Domini | Stato |
+|----------|--------|-------|
+| [01-payment-gateway](scenarios/01-payment-gateway/README.md) | REST Client, Panache Repository, Fault Tolerance, Health | disponibile |
+| [02-patient-records](scenarios/02-patient-records/README.md) | JWT RBAC, Bean Validation, Micrometer, Baggage | disponibile |
+| [03-subscription-engine](scenarios/03-subscription-engine/README.md) | `@ConfigMapping`, Active Record, ExceptionMapper | disponibile |
+| [04-inventory-openshift](scenarios/04-inventory-openshift/README.md) | Health Groups, `quarkus-openshift`, container image | disponibile |
+| [05-reactive-pipeline](scenarios/05-reactive-pipeline/README.md) | Reactive Messaging, Mutiny, Hibernate Reactive, PostgreSQL | disponibile |
+
+Per lo scenario 05 servono Podman o Docker con le variabili dei Dev
+Services:
+
+```bash
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+export TESTCONTAINERS_RYUK_DISABLED=true
+./mvnw test
+```
 
 ## Come usare un laboratorio
 
@@ -95,8 +127,9 @@ Distribuito con licenza [MIT](LICENSE).
 
 ## Aggiungere un nuovo laboratorio
 
-1. Crea `labs/NN-<slug>/<progetto-maven>/`.
+1. Crea `labs/NN-<slug>/<progetto-maven>/` oppure `scenarios/NN-<slug>/`.
 2. Scrivi la traccia seguendo la checklist in [AGENTS.md](AGENTS.md) §5.
-3. Verifica che `./mvnw test` fallisca sul codice di partenza.
+3. Verifica che `./mvnw test` fallisca sul codice di partenza; per gli
+   scenari verifica anche il verde su un branch soluzione locale.
 4. Aggiorna l'indice in questo README e il catalogo in AGENTS.md.
 5. Commit su `main` (solo la traccia, mai la soluzione).

@@ -2,7 +2,7 @@
 
 ## 0. Stato del documento
 
-- **Stato:** scenario 01 completato (traccia + soluzione locale verificate); scenari 02–05 pianificati.
+- **Stato:** tutti e cinque gli scenari completati (traccia + soluzione locale verificate).
 - **Cartella confermata:** `scenarios/`, allo stesso livello di `labs/`.
 - **Baseline tecnica:** Quarkus **3.8.1**, Java **17**, Maven con wrapper `./mvnw`.
 - **Obiettivo:** aggiungere cinque progetti hands-on multi-dominio in stile esame EX378.
@@ -100,10 +100,10 @@ Regole comuni:
 
 ### 2.3 Task iniziali
 
-- [ ] Creare la directory `scenarios/` senza spostare o rinominare i laboratori esistenti.
-- [ ] Preparare lo scaffold di `01-payment-gateway` seguendo i `pom.xml` dei progetti esistenti.
-- [ ] Verificare che il wrapper e il BOM producano una build Quarkus 3.8.1 effettiva.
-- [ ] Registrare in questo file eventuali deviazioni dal naming prima di replicare lo scaffold negli altri scenari.
+- [x] Creare la directory `scenarios/` senza spostare o rinominare i laboratori esistenti.
+- [x] Preparare lo scaffold di `01-payment-gateway` seguendo i `pom.xml` dei progetti esistenti.
+- [x] Verificare che il wrapper e il BOM producano una build Quarkus 3.8.1 effettiva.
+- [x] Registrare in questo file eventuali deviazioni dal naming prima di replicare lo scaffold negli altri scenari.
 
 ---
 
@@ -202,12 +202,12 @@ Nel codice Java degli scheletri non inserire:
 
 Prima di considerare pronta una traccia:
 
-- [ ] Eseguire `./mvnw test` sullo scheletro.
-- [ ] Verificare che il progetto compili.
-- [ ] Verificare che i test previsti falliscano.
-- [ ] Controllare che ogni fallimento corrisponda a un requisito del README.
-- [ ] Escludere fallimenti causati da infrastruttura mancante, porta occupata, configurazione errata o test non deterministico.
-- [ ] Annotare mentalmente o nel commit della traccia il numero di test eseguiti e falliti; non inserire output effimero nel README del candidato.
+- [x] Eseguire `./mvnw test` sullo scheletro.
+- [x] Verificare che il progetto compili.
+- [x] Verificare che i test previsti falliscano.
+- [x] Controllare che ogni fallimento corrisponda a un requisito del README.
+- [x] Escludere fallimenti causati da infrastruttura mancante, porta occupata, configurazione errata o test non deterministico.
+- [x] Annotare mentalmente o nel commit della traccia il numero di test eseguiti e falliti; non inserire output effimero nel README del candidato.
 
 ---
 
@@ -238,12 +238,12 @@ Per ogni scenario eseguire entrambe le verifiche seguenti.
 
 Uno scenario è completo solo quando:
 
-- [ ] rosso iniziale verificato;
-- [ ] verde della soluzione verificato;
-- [ ] test ripetuti senza fallimenti intermittenti;
-- [ ] README coerente con il comportamento dei test;
-- [ ] soluzione assente da `main`;
-- [ ] documentazione aggiornata.
+- [x] rosso iniziale verificato;
+- [x] verde della soluzione verificato;
+- [x] test ripetuti senza fallimenti intermittenti;
+- [x] README coerente con il comportamento dei test;
+- [x] soluzione assente da `main`;
+- [x] documentazione aggiornata.
 
 ---
 
@@ -315,15 +315,15 @@ Policy di resilienza da rendere esplicite:
 
 ### 6.4 Test minimi
 
-- [ ] Pagamento riuscito: `201`, stato `PAID`, record persistito.
-- [ ] Persistenza iniziale `PENDING` verificabile prima della risposta del downstream tramite il test double.
-- [ ] Input non valido: `400` e zero chiamate downstream.
-- [ ] Fallimento definitivo: `503` e stato `FAILED_PAYMENT`.
-- [ ] Retry: conteggio downstream coerente con una chiamata iniziale più tre retry.
-- [ ] Timeout: risposta oltre 800 ms trattata come fallimento secondo la policy.
-- [ ] Circuit breaker: apertura al rapporto di fallimenti configurato.
-- [ ] Readiness: `DOWN` con circuito `OPEN` e ritorno `UP` dopo il ripristino, senza rendere il test fragile.
-- [ ] Ordine inesistente: `404`.
+- [x] Pagamento riuscito: `201`, stato `PAID`, record persistito.
+- [x] Persistenza iniziale `PENDING` verificabile prima della risposta del downstream tramite il test double.
+- [x] Input non valido: `400` e zero chiamate downstream.
+- [x] Fallimento definitivo: `503` e stato `FAILED_PAYMENT`.
+- [x] Retry: conteggio downstream coerente con una chiamata iniziale più tre retry.
+- [x] Timeout: risposta oltre 800 ms trattata come fallimento secondo la policy.
+- [x] Circuit breaker: apertura al rapporto di fallimenti configurato.
+- [x] Readiness: `DOWN` con circuito `OPEN` e ritorno `UP` dopo il ripristino, senza rendere il test fragile.
+- [x] Ordine inesistente: `404`.
 
 ### 6.5 Sottotask di implementazione
 
@@ -414,29 +414,36 @@ Configurazione JWT:
 
 ### 7.4 Test minimi
 
-- [ ] Accesso anonimo: `401` sugli endpoint protetti.
-- [ ] `doctor` può creare e leggere, ma non eliminare.
-- [ ] `admin` può creare, leggere ed eliminare.
-- [ ] Ruolo non autorizzato: `403`.
-- [ ] Payload non valido: `400`, incluso codice fiscale non conforme.
-- [ ] Paziente assente: `404`.
-- [ ] Metrica `patients_access_denied_total{role="doctor"}` incrementata solo dal `403` previsto.
-- [ ] Richiesta anonima senza incremento della serie per ruolo.
-- [ ] Baggage `username` coerente con `preferred_username` del token.
-- [ ] Due utenti consecutivi non contaminano il contesto di auditing.
+- [x] Accesso anonimo: `401` sugli endpoint protetti.
+- [x] `doctor` può creare e leggere, ma non eliminare.
+- [x] `admin` può creare, leggere ed eliminare.
+- [x] Ruolo non autorizzato: `403`.
+- [x] Payload non valido: `400`, incluso codice fiscale non conforme.
+- [x] Paziente assente: `404`.
+- [x] Metrica `patients_access_denied_total{role="doctor"}` incrementata solo dal `403` previsto.
+- [x] Richiesta anonima senza incremento della serie per ruolo.
+- [x] Baggage `username` coerente con `preferred_username` del token.
+- [x] Due utenti consecutivi non contaminano il contesto di auditing.
 
 ### 7.5 Sottotask di implementazione
 
-- [ ] Creare progetto e dipendenze JWT, validation, Micrometer, OpenTelemetry e persistenza.
-- [ ] Preparare chiavi e helper di firma dei token nei test.
-- [ ] Creare modello, DTO, resource e service dello scheletro.
-- [ ] Scrivere test RBAC e validazione.
-- [ ] Scrivere test della metrica con reset o confronto del valore precedente.
-- [ ] Scrivere test del Baggage e dell'isolamento tra richieste.
-- [ ] Scrivere il README con ruoli, codici HTTP, pattern e nomi metriche.
-- [ ] Verificare il rosso iniziale.
-- [ ] Validare a runtime l'accesso a `SecurityIdentity` nel punto in cui vengono contati i `403`.
-- [ ] Implementare e verificare la soluzione locale.
+- [x] Creare progetto e dipendenze JWT, validation, Micrometer, OpenTelemetry e persistenza.
+- [x] Preparare chiavi e helper di firma dei token nei test.
+- [x] Creare modello, DTO, resource e service dello scheletro.
+- [x] Scrivere test RBAC e validazione.
+- [x] Scrivere test della metrica con reset o confronto del valore precedente.
+- [x] Scrivere test del Baggage e dell'isolamento tra richieste.
+- [x] Scrivere il README con ruoli, codici HTTP, pattern e nomi metriche.
+- [x] Verificare il rosso iniziale.
+- [x] Validare a runtime l'accesso a `SecurityIdentity` nel punto in cui vengono contati i `403`.
+- [x] Implementare e verificare la soluzione locale.
+
+### 7.6 Esiti
+
+- Rosso: 9 test su 9 falliti, tutti per `UnsupportedOperationException` nel service.
+- Verde: 9 test su 9, suite ripetuta tre volte.
+- `ExceptionMapper<ForbiddenException>` riceve `SecurityIdentity`: la metrica per ruolo funziona nel mapper, senza filtri ulteriori.
+- Le richieste anonime non producono una serie con ruolo `anonymous` perché il contatore incrementa solo i ruoli dell'identità.
 
 ---
 
@@ -504,24 +511,31 @@ Regole:
 
 ### 8.4 Test minimi
 
-- [ ] Creazione con piano `basic`: prezzo `19.90` dalla configurazione.
-- [ ] Creazione con piano `premium`: prezzo `49.90` dalla configurazione.
-- [ ] Piano sconosciuto: `400` e nessuna persistenza.
-- [ ] Rinnovo di abbonamento attivo: `200` e nuova scadenza coerente.
-- [ ] Rinnovo di abbonamento scaduto: `409`, body esatto e nessuna modifica allo stato.
-- [ ] Risorsa assente: `404`.
-- [ ] La risposta REST non espone campi interni dell'entità non previsti dal DTO.
+- [x] Creazione con piano `basic`: prezzo `19.90` dalla configurazione.
+- [x] Creazione con piano `premium`: prezzo `49.90` dalla configurazione.
+- [x] Piano sconosciuto: `400` e nessuna persistenza.
+- [x] Rinnovo di abbonamento attivo: `200` e nuova scadenza coerente.
+- [x] Rinnovo di abbonamento scaduto: `409`, body esatto e nessuna modifica allo stato.
+- [x] Risorsa assente: `404`.
+- [x] La risposta REST non espone campi interni dell'entità non previsti dal DTO.
 
 ### 8.5 Sottotask di implementazione
 
-- [ ] Creare progetto e dipendenze REST, Panache, H2 e validation.
-- [ ] Definire property e scheletro del mapping senza istruzioni risolutive.
-- [ ] Creare entità, DTO, service, resource ed eccezione.
-- [ ] Scrivere i test di mapping dei prezzi e delle regole di rinnovo.
-- [ ] Scrivere i test del mapper e del body `409`.
-- [ ] Scrivere il README con regole temporali deterministiche.
-- [ ] Verificare il rosso iniziale.
-- [ ] Implementare e verificare la soluzione locale.
+- [x] Creare progetto e dipendenze REST, Panache, H2 e validation.
+- [x] Definire property e scheletro del mapping senza istruzioni risolutive.
+- [x] Creare entità, DTO, service, resource ed eccezione.
+- [x] Scrivere i test di mapping dei prezzi e delle regole di rinnovo.
+- [x] Scrivere i test del mapper e del body `409`.
+- [x] Scrivere il README con regole temporali deterministiche.
+- [x] Verificare il rosso iniziale.
+- [x] Implementare e verificare la soluzione locale.
+
+### 8.6 Esiti
+
+- Rosso: 8 test su 8 falliti.
+- Verde: 8 test su 8, suite ripetuta tre volte.
+- Un `@Consumes(APPLICATION_JSON)` a livello di classe manda in `415` la `POST /subscriptions/{id}/renew`, che non ha body: va dichiarato solo sul metodo con body.
+- Il test sul conteggio dei record era troppo accoppiato ai dati di altri test: sostituito con una verifica per `id`.
 
 ---
 
@@ -597,27 +611,36 @@ Configurazione runtime:
 
 ### 9.5 Test e verifiche minime
 
-- [ ] Liveness disponibile e `UP` nella configurazione normale.
-- [ ] Readiness disponibile e `UP` con database di test attivo.
-- [ ] Gruppo `deep-checks` esposto e contenente i check previsti.
-- [ ] Stato `DOWN` verificato tramite una condizione di test controllabile, senza tentare di esaurire davvero la memoria JVM.
-- [ ] Build Maven completata.
-- [ ] Manifest OpenShift generato e ispezionato.
-- [ ] Route, probe e ConfigMap presenti nel manifest.
-- [ ] Build container eseguita con Podman oppure limite documentato con la causa reale.
+- [x] Liveness disponibile e `UP` nella configurazione normale.
+- [x] Readiness disponibile e `UP` con database di test attivo.
+- [x] Gruppo `deep-checks` esposto e contenente i check previsti.
+- [x] Stato `DOWN` verificato tramite una condizione di test controllabile, senza tentare di esaurire davvero la memoria JVM.
+- [x] Build Maven completata.
+- [x] Manifest OpenShift generato e ispezionato.
+- [x] Route, probe e ConfigMap presenti nel manifest.
+- [x] Build container eseguita con Podman oppure limite documentato con la causa reale.
 
 ### 9.6 Sottotask di implementazione
 
-- [ ] Verificare nella documentazione 3.8.1 i nomi delle property OpenShift e del builder container.
-- [ ] Creare progetto e configurazione health/database.
-- [ ] Creare gli health check e lo scheletro inventory.
-- [ ] Scrivere i test di liveness, readiness e gruppo.
-- [ ] Configurare OpenShift, Route, probe e ConfigMap.
-- [ ] Scrivere il README separando requisiti verificati e appendice di deploy.
-- [ ] Verificare il rosso iniziale.
-- [ ] Implementare e verificare la soluzione locale.
-- [ ] Eseguire `./mvnw package` e controllare il manifest generato.
-- [ ] Eseguire la build dell'immagine e registrare il comando effettivamente riuscito nel README.
+- [x] Verificare nella documentazione 3.8.1 i nomi delle property OpenShift e del builder container.
+- [x] Creare progetto e configurazione health/database.
+- [x] Creare gli health check e lo scheletro inventory.
+- [x] Scrivere i test di liveness, readiness e gruppo.
+- [x] Configurare OpenShift, Route, probe e ConfigMap.
+- [x] Scrivere il README separando requisiti verificati e appendice di deploy.
+- [x] Verificare il rosso iniziale.
+- [x] Implementare e verificare la soluzione locale.
+- [x] Eseguire `./mvnw package` e controllare il manifest generato.
+- [x] Eseguire la build dell'immagine e registrare il comando effettivamente riuscito nel README.
+
+### 9.7 Esiti
+
+- Rosso: 7 test su 7 falliti (4 failure, 3 error di configurazione mancante).
+- Verde: 7 test su 7.
+- I path `checks[0]` non sono affidabili: su `/q/health/ready` convivono check di estensioni diverse. Usare `checks.find { it.name == '...' }`.
+- Build immagine: `podman build -f src/main/docker/Dockerfile.jvm` è il comando verificato. Il builder Quarkus richiede `-Dquarkus.container-image.builder=docker` quando c'è anche `quarkus-openshift`, e su questa macchina il wrapper Docker usa buildx con driver `docker-container`, quindi l'immagine non finisce nello store Podman.
+- Manifest generato e ispezionato: `kind: Route`, `kind: ConfigMap`, `livenessProbe`, `readinessProbe`, `envFrom.configMapRef`.
+- Minishift non è installato e non è stato testato: il deploy resta manuale e non verificato.
 
 ---
 
@@ -637,11 +660,11 @@ Domini:
 
 Podman è disponibile in modalità rootless e il socket utente risulta attivo. Prima di scrivere lo scenario:
 
-- [ ] Verificare l'accesso al socket `$XDG_RUNTIME_DIR/podman/podman.sock`.
-- [ ] Verificare il pull e l'avvio di un container PostgreSQL.
-- [ ] Provare un progetto Quarkus 3.8.1 minimo con Dev Services PostgreSQL.
-- [ ] Se necessario, impostare `DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock` e ripetere.
-- [ ] Verificare che Hibernate Reactive e il driver PostgreSQL reattivo 3.8.1 vengano risolti da Maven.
+- [x] Verificare l'accesso al socket `$XDG_RUNTIME_DIR/podman/podman.sock`.
+- [x] Verificare il pull e l'avvio di un container PostgreSQL.
+- [x] Provare un progetto Quarkus 3.8.1 minimo con Dev Services PostgreSQL.
+- [x] Se necessario, impostare `DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock` e ripetere.
+- [x] Verificare che Hibernate Reactive e il driver PostgreSQL reattivo 3.8.1 vengano risolti da Maven.
 
 Se Dev Services non riconosce Podman:
 
@@ -689,27 +712,36 @@ Per consentire la verifica, prevedere un endpoint di sola lettura o un repositor
 
 ### 10.5 Test minimi
 
-- [ ] Transazione valida: record `PROCESSED` presente su PostgreSQL.
-- [ ] Messaggio di output pubblicato solo dopo la persistenza.
-- [ ] Acknowledgment positivo completato dopo il commit.
-- [ ] Importo non valido: nessun output di successo e nessuna persistenza processata.
-- [ ] Fallimento di persistenza: nessun acknowledgment positivo.
-- [ ] Eventi multipli elaborati senza dipendenza dall'ordine dei test.
-- [ ] ID duplicato gestito secondo una regola esplicita nel README.
-- [ ] PostgreSQL reale utilizzato durante l'esecuzione, non sostituito da H2.
+- [x] Transazione valida: record `PROCESSED` presente su PostgreSQL.
+- [x] Messaggio di output pubblicato solo dopo la persistenza.
+- [x] Acknowledgment positivo completato dopo il commit.
+- [x] Importo non valido: nessun output di successo e nessuna persistenza processata.
+- [x] Fallimento di persistenza: nessun acknowledgment positivo.
+- [x] Eventi multipli elaborati senza dipendenza dall'ordine dei test.
+- [x] ID duplicato gestito secondo una regola esplicita nel README.
+- [x] PostgreSQL reale utilizzato durante l'esecuzione, non sostituito da H2.
 
 ### 10.6 Sottotask di implementazione
 
-- [ ] Completare il gate Podman/PostgreSQL/Dev Services.
-- [ ] Creare progetto con messaging, Mutiny, Hibernate Reactive e driver PostgreSQL.
-- [ ] Creare evento, entità, processor e resource dello scheletro.
-- [ ] Configurare canali in-memory nei test senza dichiarare connettori inesistenti come `smallrye-in-memory`.
-- [ ] Scrivere test di persistenza e output.
-- [ ] Scrivere test specifici per ack dopo commit e mancato ack in caso di errore.
-- [ ] Scrivere il README con canali, eventi, stati e strategia di fallimento.
-- [ ] Verificare il rosso iniziale con PostgreSQL reale.
-- [ ] Implementare e verificare la soluzione locale.
-- [ ] Ripetere i test per escludere race condition asincrone.
+- [x] Completare il gate Podman/PostgreSQL/Dev Services.
+- [x] Creare progetto con messaging, Mutiny, Hibernate Reactive e driver PostgreSQL.
+- [x] Creare evento, entità, processor e resource dello scheletro.
+- [x] Configurare canali in-memory nei test senza dichiarare connettori inesistenti come `smallrye-in-memory`.
+- [x] Scrivere test di persistenza e output.
+- [x] Scrivere test specifici per ack dopo commit e mancato ack in caso di errore.
+- [x] Scrivere il README con canali, eventi, stati e strategia di fallimento.
+- [x] Verificare il rosso iniziale con PostgreSQL reale.
+- [x] Implementare e verificare la soluzione locale.
+- [x] Ripetere i test per escludere race condition asincrone.
+
+### 10.7 Esiti
+
+- Gate Podman: Dev Services funziona con `DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock` e `TESTCONTAINERS_RYUK_DISABLED=true`; l'immagine `postgres:14` è stata scaricata e usata realmente.
+- Rosso: 4 test su 4 falliti.
+- Verde: 4 test su 4, suite ripetuta più volte.
+- Gli handler di Reactive Messaging girano su un contesto Vert.x duplicato ma non marcato sicuro: `Panache` fallisce con `requires a safe (isolated) Vert.x sub-context`. Serve `VertxContextSafetyToggle.setContextSafe(...)` più `Panache.withSession(...)`; `@Blocking` non è ammesso sui metodi che ritornano `Uni`.
+- Un `nack` con eccezione chiude il canale in-memory (`SRMSG00028`), rendendo i test successivi dipendenti dall'ordine: il contratto definisce lo scarto come conferma senza pubblicazione, così il canale resta vivo.
+- `deliveries` su `/audit` rende osservabile che un duplicato non produce un secondo messaggio, senza leggere il database dal thread di test.
 
 ---
 
@@ -717,25 +749,25 @@ Per consentire la verifica, prevedere un endpoint di sola lettura o un repositor
 
 ### 11.1 README principale
 
-- [ ] Aggiungere `scenarios/` al diagramma della struttura.
-- [ ] Spiegare la differenza tra `labs/` e `scenarios/`.
-- [ ] Aggiungere una tabella con i cinque scenari, domini e stato.
-- [ ] Indicare che gli scenari non contengono guide passo-passo.
-- [ ] Documentare i prerequisiti aggiuntivi Podman/PostgreSQL per lo scenario 05.
-- [ ] Documentare il carattere manuale del deploy OpenShift dello scenario 04.
+- [x] Aggiungere `scenarios/` al diagramma della struttura.
+- [x] Spiegare la differenza tra `labs/` e `scenarios/`.
+- [x] Aggiungere una tabella con i cinque scenari, domini e stato.
+- [x] Indicare che gli scenari non contengono guide passo-passo.
+- [x] Documentare i prerequisiti aggiuntivi Podman/PostgreSQL per lo scenario 05.
+- [x] Documentare il carattere manuale del deploy OpenShift dello scenario 04.
 
 ### 11.2 `AGENTS.md`
 
 Aggiungere o aggiornare:
 
-- [ ] distinzione tra esercizi guidati e scenari avanzati;
-- [ ] struttura `scenarios/NN-<feature>/`;
-- [ ] convenzioni `artifactId`, package e branch soluzione;
-- [ ] regola che vieta commenti guida e `TODO` negli scenari;
-- [ ] protocollo obbligatorio rosso sullo scheletro e verde sulla soluzione locale;
-- [ ] catalogo dei cinque scenari e relativi stati;
-- [ ] nota sulle verifiche OpenShift locali rispetto al deploy manuale;
-- [ ] nota su PostgreSQL/Podman per lo scenario reattivo.
+- [x] distinzione tra esercizi guidati e scenari avanzati;
+- [x] struttura `scenarios/NN-<feature>/`;
+- [x] convenzioni `artifactId`, package e branch soluzione;
+- [x] regola che vieta commenti guida e `TODO` negli scenari;
+- [x] protocollo obbligatorio rosso sullo scheletro e verde sulla soluzione locale;
+- [x] catalogo dei cinque scenari e relativi stati;
+- [x] nota sulle verifiche OpenShift locali rispetto al deploy manuale;
+- [x] nota su PostgreSQL/Podman per lo scenario reattivo.
 
 ### 11.3 Stati del catalogo
 
@@ -763,42 +795,42 @@ Non segnare `traccia + soluzione` senza avere eseguito realmente i test.
 
 ### Fase B — Scenari REST/sicurezza/configurazione
 
-- [ ] Implementare `02-patient-records` con verifica rosso/verde.
-- [ ] Implementare `03-subscription-engine` con verifica rosso/verde.
-- [ ] Controllare che i due progetti non condividano stato o configurazioni accidentali.
+- [x] Implementare `02-patient-records` con verifica rosso/verde.
+- [x] Implementare `03-subscription-engine` con verifica rosso/verde.
+- [x] Controllare che i due progetti non condividano stato o configurazioni accidentali.
 
-**Stima:** 2–3 ore complessive.
+**Stima:** 2–3 ore complessive. **Esito:** completata, 9 test rossi/verdi per lo scenario 02 e 8 per lo scenario 03.
 
 ### Fase C — Gate infrastrutturale e messaging reattivo
 
-- [ ] Eseguire il gate Podman/PostgreSQL.
-- [ ] Implementare `05-reactive-pipeline`.
-- [ ] Verificare acknowledgment e persistenza reale.
-- [ ] Ripetere i test asincroni.
+- [x] Eseguire il gate Podman/PostgreSQL.
+- [x] Implementare `05-reactive-pipeline`.
+- [x] Verificare acknowledgment e persistenza reale.
+- [x] Ripetere i test asincroni.
 
-**Stima:** 90–150 minuti, esclusi eventuali problemi di rete nel pull delle immagini.
+**Stima:** 90–150 minuti, esclusi eventuali problemi di rete nel pull delle immagini. **Esito:** completata, gate Podman superato, 4 test rossi/verdi.
 
 ### Fase D — Health e OpenShift
 
-- [ ] Verificare property Quarkus 3.8.1.
-- [ ] Implementare `04-inventory-openshift`.
-- [ ] Verificare test health, manifest e immagine container.
-- [ ] Mantenere il deploy Minishift/CRC fuori dalle verifiche automatiche.
+- [x] Verificare property Quarkus 3.8.1.
+- [x] Implementare `04-inventory-openshift`.
+- [x] Verificare test health, manifest e immagine container.
+- [x] Mantenere il deploy Minishift/CRC fuori dalle verifiche automatiche.
 
-**Stima:** 90–120 minuti.
+**Stima:** 90–120 minuti. **Esito:** completata, 7 test rossi/verdi, manifest e immagine verificati.
 
 ### Fase E — Documentazione e controllo finale
 
-- [ ] Aggiornare README principale.
-- [ ] Aggiornare `AGENTS.md`.
-- [ ] Aggiornare gli stati in questo piano.
-- [ ] Controllare `git status` e `git branch` per assicurare che nessuna soluzione sia finita su `main`.
-- [ ] Eseguire un controllo finale dei cinque README rispetto ai test.
-- [ ] Riepilogare per ogni scenario l'esito reale dei comandi eseguiti.
+- [x] Aggiornare README principale.
+- [x] Aggiornare `AGENTS.md`.
+- [x] Aggiornare gli stati in questo piano.
+- [x] Controllare `git status` e `git branch` per assicurare che nessuna soluzione sia finita su `main`.
+- [x] Eseguire un controllo finale dei cinque README rispetto ai test.
+- [x] Riepilogare per ogni scenario l'esito reale dei comandi eseguiti.
 
-**Stima:** 45–60 minuti.
+**Stima:** 45–60 minuti. **Esito:** completata.
 
-**Stima complessiva:** 8–12 ore, includendo le soluzioni locali e le verifiche reali.
+**Stima complessiva:** 8–12 ore, includendo le soluzioni locali e le verifiche reali. Il lavoro svolto è dentro questa forbice; la parte più onerosa è stata la messa a punto di Hibernate Reactive in Reactive Messaging e del setup Podman.
 
 ---
 
@@ -824,19 +856,19 @@ Non segnare `traccia + soluzione` senza avere eseguito realmente i test.
 
 Il lavoro è concluso quando tutte le condizioni seguenti sono vere:
 
-- [ ] Esistono cinque progetti sotto `scenarios/`.
-- [ ] Ogni progetto compila sulla traccia.
-- [ ] Ogni progetto ha test inizialmente rossi per i requisiti documentati.
-- [ ] Ogni progetto ha una soluzione locale verde verificata.
-- [ ] Nessun branch soluzione è stato pushato.
-- [ ] Nessun Java degli scheletri contiene commenti guida o `TODO`.
-- [ ] Nessun README degli scenari contiene una soluzione passo-passo.
-- [ ] Tutti i codici HTTP e le property richieste sono specificati.
-- [ ] Gli health check e i manifest OpenShift sono stati verificati localmente.
-- [ ] Lo scenario reattivo usa PostgreSQL reale tramite Podman.
-- [ ] I test non dipendono dall'ordine e quelli asincroni sono stati ripetuti.
-- [ ] README principale e `AGENTS.md` descrivono la nuova famiglia di esercizi.
-- [ ] Gli stati del catalogo riflettono esclusivamente verifiche effettivamente eseguite.
+- [x] Esistono cinque progetti sotto `scenarios/`.
+- [x] Ogni progetto compila sulla traccia.
+- [x] Ogni progetto ha test inizialmente rossi per i requisiti documentati.
+- [x] Ogni progetto ha una soluzione locale verde verificata.
+- [x] Nessun branch soluzione è stato pushato.
+- [x] Nessun Java degli scheletri contiene commenti guida o `TODO`.
+- [x] Nessun README degli scenari contiene una soluzione passo-passo.
+- [x] Tutti i codici HTTP e le property richieste sono specificati.
+- [x] Gli health check e i manifest OpenShift sono stati verificati localmente.
+- [x] Lo scenario reattivo usa PostgreSQL reale tramite Podman.
+- [x] I test non dipendono dall'ordine e quelli asincroni sono stati ripetuti.
+- [x] README principale e `AGENTS.md` descrivono la nuova famiglia di esercizi.
+- [x] Gli stati del catalogo riflettono esclusivamente verifiche effettivamente eseguite.
 
 ---
 

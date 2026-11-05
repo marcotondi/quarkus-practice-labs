@@ -24,37 +24,49 @@ Licenza: **MIT**.
 
 ## 3. Struttura e naming
 
+Due famiglie di esercizi:
+
 ```
 labs/
-  NN-<topic>/              # argomento
-    EE-<feature>/          # esercizio = progetto Maven (3-4 feature)
+  NN-<topic>/              # argomento mono-dominio
+    EE-<feature>/          # esercizio = progetto Maven
       pom.xml, README.md (la traccia), src/
+scenarios/
+  NN-<feature>/            # scenario multi-dominio, senza guida passo-passo
+    pom.xml, README.md (il contratto), src/
 ```
 
 - **Argomento**: `NN-<topic>` (es. `01-configuration`).
 - **Esercizio**: `EE-<feature>` (es. `01-typed-config`); più esercizi =
   cartelle sorelle dentro l'argomento.
-- `artifactId`: `lab-<feature>`. Package: `io.github.marcotondi.labs.<topic>`.
-- **Branch soluzione**: `sol/EE-<feature>`.
+- `artifactId`: `lab-<feature>` per `labs/`, `scenario-NN-<feature>` per
+  `scenarios/`.
+- Package: `io.github.marcotondi.labs.<topic>` per `labs/`,
+  `io.github.marcotondi.labs.scenario.<area>` per `scenarios/`.
+- **Branch soluzione**: `sol/EE-<feature>` oppure
+  `sol/scenario-NN-<feature>`.
 - Vietati spazi/maiuscole nei nomi di cartella.
 
 ## 4. Workflow tracce / soluzioni
 
-- `main` = **solo tracce** (`// TODO` + test rossi). Push: `git push origin main`.
-- Soluzioni su branch **locali** `sol/EE-<feature>`, **mai pushati**.
+- `main` = **solo tracce** (test rossi). Push: `git push origin main`.
+- Soluzioni su branch **locali** `sol/EE-<feature>` o
+  `sol/scenario-NN-<feature>`, **mai pushati**.
 - Reset di una traccia: `git restore .`.
-- Nuovo lab: `git switch -c sol/EE-<feature>` dal `main`, risolvere,
-  committare, tornare su `main`.
+- Nuovo lab: `git switch -c sol/...` dal `main`, risolvere, committare,
+  tornare su `main`.
 
 ## 5. Checklist di una traccia
 
 1. **`README.md`**: scenario, comportamento atteso, comandi, regole,
    rubrica. Il livello di guida è **progressivo** (vedi sotto).
 2. Progetto Maven che compila e si avvia.
-3. Codice parziale con `// TODO: Implementare qui`; i file marcati
+3. Codice parziale; in `labs/` con `// TODO: Implementare qui`, in
+   `scenarios/` **senza alcun commento di aiuto né TODO**. I file marcati
    "NON modificare" restano completi.
 4. Test `@QuarkusTest` che **devono fallire** sulla traccia. Verificato
-   con `./mvnw test` prima del commit.
+   con `./mvnw test` prima del commit; negli scenari tutti i test devono
+   essere rossi, non solo una parte.
 5. Comandi `./mvnw quarkus:dev` e `./mvnw test`.
 
 Regole: niente dipendenze extra / Lombok / framework aggiunti dal
@@ -67,7 +79,12 @@ esercizi successivi in poi: niente elenco di passi, niente codice finale nel
 README; restano scenario, comportamento atteso, vincoli e rubrica, e il
 candidato deduce da sé classi, annotazioni e proprietà.
 
-## 6. Catalogo (20 esercizi / 11 argomenti)
+**Scenari avanzati.** In `scenarios/` la regola è ancora più stretta:
+nessun passo, nessuno snippet, nessun commento nel codice, e ogni scenario
+combina almeno tre domini EX378. Ogni scenario va validato due volte:
+rosso sulla traccia e **verde su un branch soluzione locale**.
+
+## 6. Catalogo (20 esercizi / 11 argomenti + 5 scenari)
 
 `*` = ha anche il branch soluzione.
 
@@ -84,6 +101,14 @@ candidato deduce da sé classi, annotazioni e proprietà.
 - **11-observability**: 01-tracing-baggage
 
 Stati: `pianificato` → `traccia` → `traccia + soluzione`.
+
+**Scenari multi-dominio** (`scenarios/`, tutti `traccia + soluzione`):
+
+- **01-payment-gateway**: REST Client + Panache Repository + Fault Tolerance + Health
+- **02-patient-records**: JWT RBAC + Bean Validation + Micrometer + Baggage
+- **03-subscription-engine**: `@ConfigMapping` + Active Record + `ExceptionMapper`
+- **04-inventory-openshift**: Health Groups + `quarkus-openshift` + container image
+- **05-reactive-pipeline**: Reactive Messaging + Mutiny + Hibernate Reactive + PostgreSQL
 
 ## 7. Protocollo esaminatore
 
@@ -116,6 +141,24 @@ best practice 20%.
   sul canale, altrimenti l'app non parte.
 - **REST Client**: un'interfaccia senza metodi HTTP annotati non viene
   registrata → build fallisce.
+- **H2 e parole riservate**: `order`, `transaction` sono riservate;
+  usare `@Table(name = "orders")` / `"transactions"`.
+- **`@Consumes` sulla classe**: una `POST` senza body riceve `415`.
+  Metterlo solo sui metodi che hanno davvero un body.
+- **Circuit breaker e readiness**: il nome di default è
+  `Classe/metodo`; per leggerlo con `CircuitBreakerMaintenance` conviene
+  fissarlo con `@CircuitBreakerName`.
+- **Hibernate Reactive in Reactive Messaging**: l'handler gira su un
+  contesto Vert.x duplicato ma non marcato sicuro; serve
+  `VertxContextSafetyToggle.setContextSafe(...)` e una sessione
+  (`Panache.withSession`). `@Blocking` non è ammesso su metodi che
+  ritornano `Uni`.
+- **Dev Services con Podman rootless**: richiede
+  `DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock` e
+  `TESTCONTAINERS_RYUK_DISABLED=true`.
+- **Test double HTTP**: valutare il fallimento programmato **prima** del
+  ritardo simulato, altrimenti le richieste rimaste in volo consumano i
+  fallimenti del test successivo.
 
 ## 9. Backlog: domini da rafforzare
 
