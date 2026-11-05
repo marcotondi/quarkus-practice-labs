@@ -12,13 +12,13 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/subscriptions")
 @Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class SubscriptionResource {
 
     @Inject
     SubscriptionService service;
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response create(SubscriptionRequest request) {
         return Response.status(Response.Status.CREATED).entity(service.create(request)).build();
     }

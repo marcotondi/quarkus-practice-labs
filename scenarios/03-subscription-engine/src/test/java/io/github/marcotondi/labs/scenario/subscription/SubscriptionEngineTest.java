@@ -135,6 +135,6 @@ class SubscriptionEngineTest {
         LocalDate expiresAt = LocalDate.parse(response.path("expiresAt"));
         assertTrue(expiresAt.isAfter(LocalDate.now().plusDays(25)),
                 "validità attesa di circa un mese: " + expiresAt);
-        assertEquals(1, Subscription.count("plan", "premium"));
+        assertEquals(1, Subscription.count("id", Long.parseLong(response.path("id").toString())));
     }
 }
